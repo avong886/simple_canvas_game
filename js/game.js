@@ -35,6 +35,7 @@ var hero = {
 };
 var monster = {};
 var monstersCaught = 0;
+var checkpoints=[20,30];
 
 // Handle keyboard controls
 var keysDown = {};
@@ -104,6 +105,45 @@ var render = function () {
 	ctx.textAlign = "left";
 	ctx.textBaseline = "top";
 	ctx.fillText("Goblins caught: " + monstersCaught, 32, 32);
+
+if(checkpoints[0])
+{
+var cX= checkpoints[0][0];
+var cY= checkpoints[0][1];
+
+ctx.fillStyle="#33ccff";
+ctx.fillRect(checkpoints
+if(monster.x< cX)
+{
+monster.x+=1;
+}
+if(monster.x> cX)
+{
+monster.x-=1;
+}
+if(monster.y< cY)
+{
+monster.y+=1;
+}
+if(monster.y> cY)
+{
+monster.y-=1;
+}
+if(monster.x< cX+32
+&& cX<monster.x+32
+&& monster.y<cY+32
+&& cY<monster.y+32)
+{
+checkpoints.splice(0,1);
+checkpoints.push([32 + (Math.random() * (canvas.width - 64)),32 + (Math.random() * (canvas.height - 64))]);
+}
+
+
+
+
+}
+
+
 };
 
 // The main game loop
